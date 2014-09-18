@@ -27,14 +27,14 @@ public class BestOfferFinder {
             }
         }
 
-        public int occurenceCount(Item item) {
+        public int occurrenceCount(Item item) {
             Integer value = covered.get(item);
             return value == null ? 0 : value;
         }
 
         public void updateCovered(int offerId, boolean offerIncluded) {
-            for (Item item:offers[offerId].items) {
-                int value = offerIncluded ? coveredItems.occurenceCount(item)+1 : coveredItems.occurenceCount(item)-1;
+            for (Item item:offers[offerId].getItems()) {
+                int value = offerIncluded ? coveredItems.occurrenceCount(item)+1 : coveredItems.occurrenceCount(item)-1;
                 covered.put(item, value);
             }
         }
@@ -56,7 +56,7 @@ public class BestOfferFinder {
         }
         double price = 0.0;
         for (int offerId : offerIds) {
-            price += offers[offerId].price;
+            price += offers[offerId].getPrice();
         }
         return price;
     }
