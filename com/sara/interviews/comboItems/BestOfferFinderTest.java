@@ -1,4 +1,4 @@
-package com.sara.interviews;
+package com.sara.interviews.comboItems;
 
 import junit.framework.TestCase;
 
