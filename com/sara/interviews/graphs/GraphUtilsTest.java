@@ -15,6 +15,24 @@ public class GraphUtilsTest {
     Object v3 = new Object();
     Object v4 = new Object();
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testIsBipartiteNullGraph() {
+        GraphUtils.isBipartite(null);
+    }
+
+    @Test
+    public void testIsBipartiteEmptyGraph() throws Exception {
+        Graph<Object> g = new Graph(asList(),asList());
+        assertTrue(GraphUtils.isBipartite(g));
+    }
+
+    @Test
+    public void testIsBipartiteIncorrectGraph() throws Exception {
+        Edge<Object> e0 = Edge.<Object>of(v0,v1);
+        Graph<Object> g = new Graph(asList(),asList(e0));
+        assertTrue(GraphUtils.isBipartite(g));
+    }
+
     @Test
     public void testIsBipartiteCycleOfTwo() throws Exception {
         Edge<Object> e0 = Edge.<Object>of(v0,v1);
