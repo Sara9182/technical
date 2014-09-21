@@ -12,16 +12,15 @@ public class BestOfferFinder {
     private CoveredItems coveredItems;
     private LinkedList<Integer> chosenOffers;
 
-    public BestOfferFinder(Offer[] offers) {
+    public BestOfferFinder(Offer... offers) {
         this.offers = offers;
     }
 
     class CoveredItems {
 
-        private HashMap<Item, Integer> covered;
+        private HashMap<Item, Integer> covered = new HashMap<>();;
 
         public CoveredItems() {
-            covered = new HashMap<>();
             for (Item item : items) {
                 covered.put(item, 0);
             }
@@ -83,7 +82,7 @@ public class BestOfferFinder {
         }
     }
 
-    public synchronized LinkedList<Integer> find(List<Item> items) {
+    public LinkedList<Integer> find(List<Item> items) {
         this.items = items;
         coveredItems = new CoveredItems();
         chosenOffers = new LinkedList<>();
