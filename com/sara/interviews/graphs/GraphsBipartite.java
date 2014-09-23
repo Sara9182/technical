@@ -1,14 +1,11 @@
 package com.sara.interviews.graphs;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class GraphUtils {
+public class GraphsBipartite {
 
     /*
-     * Checks if the whole graph (possibly unconnected) is bipartite.
+     * Checks if the whole graph G<T> (possibly unconnected) is bipartite.
      */
     public static <T> boolean isBipartite(Graph<T> g) {
 
@@ -53,4 +50,6 @@ public class GraphUtils {
         }
         return true;
     }
+
+
 }

@@ -1,13 +1,14 @@
 package com.sara.interviews.graphs;
 
-import org.apache.commons.collections4.MultiMap;
-import org.apache.commons.collections4.map.MultiValueMap;
 
+
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import java.util.List;
 
 public class Graph<T> {
-    private final List<T> vertices;
-    private MultiMap<T,T> adjacent = new MultiValueMap<>();
+    private final Iterable<T> vertices;
+    private Multimap<T,T> adjacent = ArrayListMultimap.create();
 
     public Graph(List<T> vertices, List<Edge<T>> edges) {
         this.vertices = vertices;
@@ -18,7 +19,7 @@ public class Graph<T> {
                 });
     }
 
-    public List<T> getVertices() {
+    public Iterable<T> getVertices() {
         return vertices;
     }
 
