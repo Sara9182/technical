@@ -10,7 +10,7 @@ public class Edge<T> {
     }
 
     public static <T> Edge<T> of(T from, T to) {
-        return new Edge<T>(from, to);
+        return new Edge<>(from, to);
     }
 
     public T getFrom() {

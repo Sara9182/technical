@@ -2,7 +2,7 @@ package com.sara.interviews.comboItems;
 
 import java.util.List;
 
-public class Offer {
+class Offer {
     private final List<Item> items;
     private final double price;
 
@@ -20,7 +20,6 @@ public class Offer {
     }
 
     public boolean coversNewItem(BestOfferFinder.CoveredItems coveredItems) {
-        boolean coversNew = false;
         for (Item item:items) {
             if (coveredItems.occurrenceCount(item) == 0) {
                 return true;

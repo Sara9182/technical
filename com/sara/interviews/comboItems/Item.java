@@ -1,6 +1,6 @@
 package com.sara.interviews.comboItems;
 
-public class Item {
+class Item {
     private final String name;
 
     public Item (String name) {

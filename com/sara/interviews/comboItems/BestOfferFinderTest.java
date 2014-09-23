@@ -7,13 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class BestOfferFinderTest extends TestCase {
-    Offer[] offers;
-    Item a = new Item("A");
-    Item b = new Item("B");
-    Item c = new Item("C");
-    Item d = new Item("D");
-    Item e = new Item("E");
-    BestOfferFinder finder;
+    private Offer[] offers;
+    private final Item a = new Item("A");
+    private final Item b = new Item("B");
+    private final Item c = new Item("C");
+    private final Item d = new Item("D");
+    private final Item e = new Item("E");
+    private BestOfferFinder finder;
 
     private void testItems(LinkedList<Item> items, List<Integer> expectedSolution) {
         List<Integer> solution = finder.find(items);
@@ -35,7 +35,7 @@ public class BestOfferFinderTest extends TestCase {
         testItems(new LinkedList<>(Arrays.asList(c)), new LinkedList<>(Arrays.asList(4)));
         testItems(new LinkedList<>(Arrays.asList(d)), new LinkedList<>(Arrays.asList(3)));
         testItems(new LinkedList<>(Arrays.asList(c,d)), new LinkedList<>(Arrays.asList(2)));
-        testItems(new LinkedList<>(Arrays.asList(e)), new LinkedList<Integer>());
-        testItems(new LinkedList<Item>(), new LinkedList<Integer>());
+        testItems(new LinkedList<>(Arrays.asList(e)), new LinkedList<>());
+        testItems(new LinkedList<>(), new LinkedList<>());
     }
 }

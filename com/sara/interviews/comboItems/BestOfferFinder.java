@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BestOfferFinder {
+class BestOfferFinder {
     private final Offer[] offers;
     private double bestPrice;
     private LinkedList<Integer> bestOffer;
@@ -18,7 +18,7 @@ public class BestOfferFinder {
 
     class CoveredItems {
 
-        private HashMap<Item, Integer> covered = new HashMap<>();;
+        private HashMap<Item, Integer> covered = new HashMap<>();
 
         public CoveredItems() {
             for (Item item : items) {
@@ -66,7 +66,7 @@ public class BestOfferFinder {
                 double price = calculatePrice(chosenOffers);
                 if (price < bestPrice) {
                     bestPrice = price;
-                    bestOffer = (LinkedList) chosenOffers.clone();
+                    bestOffer = (LinkedList<Integer>) chosenOffers.clone();
                 }
             }
             else {
