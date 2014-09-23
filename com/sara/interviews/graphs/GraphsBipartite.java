@@ -2,7 +2,7 @@ package com.sara.interviews.graphs;
 
 import java.util.*;
 
-public class GraphUtilsBipartite {
+public class GraphsBipartite {
 
     /*
      * Checks if the whole graph G<T> (possibly unconnected) is bipartite.

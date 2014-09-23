@@ -6,7 +6,7 @@ import java.util.*;
 
 import static java.lang.Math.min;
 
-public class GraphUtilsBiconnected {
+public class GraphsBiconnected {
 
     /*
      * A helper DFS method for articulationPoints()
@@ -50,9 +50,6 @@ public class GraphUtilsBiconnected {
      * Returns all articulation points in the undirected, connected graph G<T>
      */
     public static <T> Set<T> articulationPoints(Graph<T> g) {
-        if (g == null) {
-            throw new IllegalArgumentException();
-        }
         HashSet<T> aps = new HashSet<>();
         if (Iterables.isEmpty(g.getVertices())) {
             return aps;

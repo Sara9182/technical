@@ -1,14 +1,12 @@
 package com.sara.interviews.graphs;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
-public class GraphUtilsBiconnectedTest {
+public class GraphsBiconnectedTest {
 
     Object v0 = new Object();
     Object v1 = new Object();
@@ -17,28 +15,23 @@ public class GraphUtilsBiconnectedTest {
     Object v4 = new Object();
     Object v5 = new Object();
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testArticulationPointsNullGraph() {
-        GraphUtilsBiconnected.articulationPoints(null);
-    }
-
     @Test
     public void testArticulationPointsSingleVertex(){
         Graph<Object> g = new Graph(asList(v0),asList());
-        assertTrue(GraphUtilsBiconnected.isBiconnected(g));
+        assertTrue(GraphsBiconnected.isBiconnected(g));
     }
 
     @Test
     public void testArticulationPointsTwoDisconnectedVertices(){
         Graph<Object> g = new Graph(asList(v0,v1),asList());
-        assertTrue(GraphUtilsBiconnected.isBiconnected(g));
+        assertTrue(GraphsBiconnected.isBiconnected(g));
     }
 
     @Test
     public void testArticulationPointsTwoConnectedVertices(){
         Edge<Object> e0 = Edge.<Object>of(v0,v1);
         Graph<Object> g = new Graph(asList(v0,v1),asList(e0));
-        assertTrue(GraphUtilsBiconnected.isBiconnected(g));
+        assertTrue(GraphsBiconnected.isBiconnected(g));
     }
 
     @Test
@@ -46,8 +39,8 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e0 = Edge.<Object>of(v0,v1);
         Edge<Object> e1 = Edge.<Object>of(v1,v2);
         Graph<Object> g = new Graph(asList(v0,v1,v2),asList(e0,e1));
-        assertFalse(GraphUtilsBiconnected.isBiconnected(g));
-        assertEquals(Sets.newHashSet(v1), GraphUtilsBiconnected.articulationPoints(g));
+        assertFalse(GraphsBiconnected.isBiconnected(g));
+        assertEquals(Sets.newHashSet(v1), GraphsBiconnected.articulationPoints(g));
     }
 
     @Test
@@ -56,7 +49,7 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e1 = Edge.<Object>of(v1,v2);
         Edge<Object> e2 = Edge.<Object>of(v2,v0);
         Graph<Object> g = new Graph(asList(v0,v1,v2),asList(e0,e1,e2));
-        assertTrue(GraphUtilsBiconnected.isBiconnected(g));
+        assertTrue(GraphsBiconnected.isBiconnected(g));
     }
 
     @Test
@@ -66,8 +59,8 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e2 = Edge.<Object>of(v2,v0);
         Edge<Object> e3 = Edge.<Object>of(v0,v3);
         Graph<Object> g = new Graph(asList(v0,v1,v2,v3),asList(e0,e1,e2,e3));
-        assertFalse(GraphUtilsBiconnected.isBiconnected(g));
-        assertEquals(Sets.newHashSet(v0), GraphUtilsBiconnected.articulationPoints(g));
+        assertFalse(GraphsBiconnected.isBiconnected(g));
+        assertEquals(Sets.newHashSet(v0), GraphsBiconnected.articulationPoints(g));
     }
 
     @Test
@@ -77,7 +70,7 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e2 = Edge.<Object>of(v2,v3);
         Edge<Object> e3 = Edge.<Object>of(v3,v0);
         Graph<Object> g = new Graph(asList(v0,v1,v2,v3),asList(e0,e1,e2,e3));
-        assertTrue(GraphUtilsBiconnected.isBiconnected(g));
+        assertTrue(GraphsBiconnected.isBiconnected(g));
     }
 
     @Test
@@ -89,8 +82,8 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e4 = Edge.<Object>of(v3,v4);
         Edge<Object> e5 = Edge.<Object>of(v4,v0);
         Graph<Object> g = new Graph(asList(v0,v1,v2,v3,v4),asList(e0,e1,e2,e3,e4,e5));
-        assertFalse(GraphUtilsBiconnected.isBiconnected(g));
-        assertEquals(Sets.newHashSet(v0), GraphUtilsBiconnected.articulationPoints(g));
+        assertFalse(GraphsBiconnected.isBiconnected(g));
+        assertEquals(Sets.newHashSet(v0), GraphsBiconnected.articulationPoints(g));
     }
 
     @Test
@@ -100,8 +93,8 @@ public class GraphUtilsBiconnectedTest {
         Edge<Object> e2 = Edge.<Object>of(v1,v3);
         Edge<Object> e3 = Edge.<Object>of(v1,v4);
         Graph<Object> g = new Graph(asList(v0,v1,v2,v3,v4),asList(e0,e1,e2,e3));
-        assertFalse(GraphUtilsBiconnected.isBiconnected(g));
-        assertEquals(Sets.newHashSet(v1), GraphUtilsBiconnected.articulationPoints(g));
+        assertFalse(GraphsBiconnected.isBiconnected(g));
+        assertEquals(Sets.newHashSet(v1), GraphsBiconnected.articulationPoints(g));
     }
 
 }
