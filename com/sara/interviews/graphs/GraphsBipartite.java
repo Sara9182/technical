@@ -7,7 +7,7 @@ class GraphsBipartite {
     /*
      * Checks if the whole graph G<T> (possibly unconnected) is bipartite.
      */
-    public static <T> boolean isBipartite(Graph<T> g) {
+    public static <T> boolean isBipartite(UndirectedGraph<T> g) {
 
         class BipartiteGraphChecker {
             boolean isOddLayer = false;

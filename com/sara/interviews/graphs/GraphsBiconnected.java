@@ -11,7 +11,7 @@ class GraphsBiconnected {
     /*
      * A helper DFS method for articulationPoints()
      */
-    private static <T> void dfsAP(Graph<T> g, T vertex, int dfsNo, Map<T,Integer> dfsIds, Set<T> artPoints, Map<T,Integer> low) {
+    private static <T> void dfsAP(UndirectedGraph<T> g, T vertex, int dfsNo, Map<T,Integer> dfsIds, Set<T> artPoints, Map<T,Integer> low) {
         dfsIds.put(vertex, dfsNo);
         //root is a special case
         if (dfsNo == 0) {
@@ -49,7 +49,7 @@ class GraphsBiconnected {
     /*
      * Returns all articulation points in the undirected, connected graph G<T>
      */
-    public static <T> Set<T> articulationPoints(Graph<T> g) {
+    public static <T> Set<T> articulationPoints(UndirectedGraph<T> g) {
         HashSet<T> aps = new HashSet<>();
         if (Iterables.isEmpty(g.getVertices())) {
             return aps;
@@ -60,9 +60,9 @@ class GraphsBiconnected {
 
     /*
      * Checks if the undirected, connected graph G<T> is biconnected.
-     * Graph is biconnected <=> it doesn't have any articulation points.
+     * UndirectedGraph is biconnected <=> it doesn't have any articulation points.
      */
-    public static <T> boolean isBiconnected(Graph<T> g) {
+    public static <T> boolean isBiconnected(UndirectedGraph<T> g) {
         return Iterables.isEmpty(articulationPoints(g));
     }
 }
