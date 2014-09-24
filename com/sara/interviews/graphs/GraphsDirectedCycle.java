@@ -36,12 +36,20 @@ class GraphsDirectedCycle {
     }
 
     /*
-     * Checks if a directed connected graph has got a directed cycle
+     * Checks if a directed graph has got a directed cycle
      */
     public static <T> boolean hasCycle(DirectedGraph<T> g) {
-        if (Iterables.isEmpty(g.getVertices())) {
-            return false;
+        Iterable<T> vertices = g.getVertices();
+        Map<T,Integer> dfsIds = new HashMap<>();
+        //unless the graph is strongly connected, we need to call DFS traversal for each unvisited vertex
+        for (T vertex : vertices) {
+            if (!dfsIds.containsKey(vertex)) {
+                //a graph contains a cycle if any of its strongly connected components contains a cycle
+                if (dfsCheckForCycle(g, Iterables.getFirst(g.getVertices(),null), 0, dfsIds, new HashSet<>())) {
+                    return true;
+                }
+            }
         }
-        return dfsCheckForCycle(g, Iterables.getFirst(g.getVertices(),null),0,new HashMap<>(), new HashSet<>());
+        return false;
     }
 }

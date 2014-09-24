@@ -14,6 +14,7 @@ public class GraphsDirectedCycleTest {
     private final Object v2 = new Object();
     private final Object v3 = new Object();
     private final Object v4 = new Object();
+    private final Object v5 = new Object();
 
     @Test
     public void testEmptyGraph() throws Exception {
@@ -67,5 +68,25 @@ public class GraphsDirectedCycleTest {
         Edge<Object> e4 = Edge.of(v1, v4);
         DirectedGraph<Object> g = new DirectedGraph<>(asList(v0,v1,v2,v3,v4),asList(e0,e1,e2,e3,e4));
         assertTrue(GraphsDirectedCycle.hasCycle(g));
+    }
+
+    @Test
+    public void testTwoDisconnectedCycles() throws Exception {
+        Edge<Object> e0 = Edge.of(v0, v1);
+        Edge<Object> e1 = Edge.of(v1, v2);
+        Edge<Object> e2 = Edge.of(v2, v0);
+        Edge<Object> e3 = Edge.of(v3, v4);
+        DirectedGraph<Object> g = new DirectedGraph<>(asList(v0,v1,v2,v3,v4),asList(e0,e1,e2,e3));
+        assertTrue(GraphsDirectedCycle.hasCycle(g));
+    }
+
+    @Test
+    public void testTwoDisconnectedPaths() throws Exception {
+        Edge<Object> e0 = Edge.of(v0, v1);
+        Edge<Object> e1 = Edge.of(v1, v2);
+        Edge<Object> e2 = Edge.of(v3, v4);
+        Edge<Object> e3 = Edge.of(v4, v5);
+        DirectedGraph<Object> g = new DirectedGraph<>(asList(v0,v1,v2,v3,v4),asList(e0,e1,e2,e3));
+        assertFalse(GraphsDirectedCycle.hasCycle(g));
     }
 }
