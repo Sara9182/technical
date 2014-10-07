@@ -60,10 +60,10 @@ public class Sorting {
         return max;
     }
 
-    private static <K,T> List<T> mergeListsInMap(SortedMap<K,List<T>> map) {
-        Set<K> keys = map.keySet();
+    private static <K,T> List<T> mergeBuckets(SortedMap<K, List<T>> buckets) {
+        Set<K> keys = buckets.keySet();
         List<T> list = Lists.newArrayList();
-        keys.forEach(key -> list.addAll(map.get(key)));
+        keys.forEach(key -> list.addAll(buckets.get(key)));
         return list;
     }
 
@@ -79,7 +79,7 @@ public class Sorting {
             list.add(item);
         }
         arrayList.clear();
-        arrayList.addAll(mergeListsInMap(buckets));
+        arrayList.addAll(mergeBuckets(buckets));
     }
 
     private static void strBucketPositionSort(List<String> arrayList, int pos) {
@@ -100,7 +100,7 @@ public class Sorting {
             strBucketPositionSort(buckets.get(c), pos+1);
         }
         arrayList.clear();
-        arrayList.addAll(mergeListsInMap(buckets));
+        arrayList.addAll(mergeBuckets(buckets));
     }
 
     private static <T> void copyListToArray(List<T> arrayList, T[] array) {
@@ -123,7 +123,7 @@ public class Sorting {
     public static void radixSort(String[] array) {
         List<String> arrayList = Lists.newArrayList(array);
         //most significant digit recursive bucket sort
-        strBucketPositionSort(arrayList,0);
+        strBucketPositionSort(arrayList, 0);
         copyListToArray(arrayList,array);
     }
 
